@@ -1,0 +1,39 @@
+# ROS2
+
+build/
+install/
+log/
+
+# Python
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+
+.venv/
+venv/
+
+# VSCode
+
+.vscode/
+
+# OS
+
+.DS_Store
+Thumbs.db
+
+# ROS
+
+*.rviz
+*.db3
+
+# Colcon
+
+.colcon/
+
+# Gazebo
+
+*.world~
