@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.6">
+
+  <model name="box_obstacle">
+
+    <!-- 이 모델은 움직이지 않는 고정 물체라는 뜻 -->
+    <static>true</static>
+
+    <link name="link">
+
+      <!-- 충돌 영역 -->
+      <collision name="collision">
+
+        <geometry>
+          <box>
+            <size>1 1 1</size> <!-- 보이는 모양도 1m × 1m × 1m 박스로 정의 -->
+          </box>
+        </geometry>
+
+      </collision>
+
+      <!-- 보이는 모양 -->
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>1 1 1</size>
+          </box>
+        </geometry>
+
+      </visual>
+
+    </link>
+
+  </model>
+
+</sdf>
