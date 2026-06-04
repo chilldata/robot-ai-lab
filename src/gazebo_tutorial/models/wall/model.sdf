@@ -6,30 +6,22 @@
 
     <static>true</static>
 
-    <link name="wall_link">
+    <link name="link">
 
       <collision name="collision">
-
         <geometry>
-
           <box>
-            <size>0.2 6 2</size>
+            <size>10 0.2 2</size>
           </box>
-
         </geometry>
-
       </collision>
 
       <visual name="visual">
-
         <geometry>
-
           <box>
-            <size>0.2 6 2</size>
+            <size>10 0.2 2</size>
           </box>
-
         </geometry>
-
       </visual>
 
     </link>

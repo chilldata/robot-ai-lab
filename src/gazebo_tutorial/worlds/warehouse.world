@@ -4,21 +4,107 @@
 
   <world name="warehouse_world">
 
+    <!-- ========================= -->
+    <!-- 기본 환경 -->
+    <!-- ========================= -->
+
     <!-- 바닥 -->
     <include>
       <uri>model://ground_plane</uri>
+      <name>ground_plane_main</name>
     </include>
 
     <!-- 태양 -->
     <include>
       <uri>model://sun</uri>
+      <name>sun_main</name>
     </include>
 
-    <!-- 박스 장애물 -->
+
+    <!-- ========================= -->
+    <!-- 창고 외곽 벽 -->
+    <!-- ========================= -->
+
+    <!-- 북쪽 벽 -->
+    <include>
+      <uri>model://wall</uri>
+      <name>wall_north</name>
+      <pose>0 8 1 0 0 0</pose>
+    </include>
+
+    <!-- 남쪽 벽 -->
+    <include>
+      <uri>model://wall</uri>
+      <name>wall_south</name>
+      <pose>0 -8 1 0 0 0</pose>
+    </include>
+
+    <!-- 동쪽 벽 -->
+    <include>
+      <uri>model://wall</uri>
+      <name>wall_east</name>
+      <pose>8 0 1 0 0 1.57</pose>
+    </include>
+
+    <!-- 서쪽 벽 -->
+    <include>
+      <uri>model://wall</uri>
+      <name>wall_west</name>
+      <pose>-8 0 1 0 0 1.57</pose>
+    </include>
+
+
+    <!-- ========================= -->
+    <!-- 창고 내부 장애물 -->
+    <!-- ========================= -->
+
+    <!-- 첫 번째 줄 -->
     <include>
       <uri>model://box_obstacle</uri>
-      <pose>2 0 0.5 0 0 0</pose>
+      <name>box_obstacle_1</name>
+      <pose>-3 4 0.5 0 0 0</pose>
     </include>
+
+    <include>
+      <uri>model://box_obstacle</uri>
+      <name>box_obstacle_2</name>
+      <pose>0 4 0.5 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://box_obstacle</uri>
+      <name>box_obstacle_3</name>
+      <pose>3 4 0.5 0 0 0</pose>
+    </include>
+
+
+    <!-- 두 번째 줄 -->
+    <include>
+      <uri>model://box_obstacle</uri>
+      <name>box_obstacle_4</name>
+      <pose>-3 0 0.5 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://box_obstacle</uri>
+      <name>box_obstacle_5</name>
+      <pose>0 0 0.5 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://box_obstacle</uri>
+      <name>box_obstacle_6</name>
+      <pose>3 0 0.5 0 0 0</pose>
+    </include>
+
+
+    <!-- ========================= -->
+    <!-- 로봇 시작 위치 공간 -->
+    <!-- ========================= -->
+    <!--
+      왼쪽 아래 공간을 비워둠
+      이후 로봇 spawn 예정
+    -->
 
   </world>
 
