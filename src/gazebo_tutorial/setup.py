@@ -19,7 +19,7 @@ setup(
         ('share/' + package_name + '/models/wall',
             ['models/wall/model.sdf', 'models/wall/model.config']),
         ('share/' + package_name + '/urdf',
-            ['urdf/turtlebot3_burger_black.urdf']),
+            ['urdf/turtlebot3_burger_black.urdf', 'urdf/big_robot.urdf']),
     ],
     install_requires=['setuptools'],
     zip_safe=True,

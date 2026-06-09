@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<robot name="big_robot">
+
+  <material name="body_blue">
+    <color rgba="0.15 0.35 0.75 1.0"/>
+  </material>
+  <material name="wheel_black">
+    <color rgba="0.1 0.1 0.1 1.0"/>
+  </material>
+  <material name="wheel_grey">
+    <color rgba="0.5 0.5 0.5 1.0"/>
+  </material>
+  <material name="caster_silver">
+    <color rgba="0.7 0.7 0.75 1.0"/>
+  </material>
+
+  <!-- ========================= -->
+  <!-- Base footprint            -->
+  <!-- ========================= -->
+
+  <link name="base_footprint"/>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0.15" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ========================= -->
+  <!-- Main body                 -->
+  <!-- body: 0.6m x 0.35m x 0.25m -->
+  <!-- bottom of body at wheel axle height (z=0) of base_link) -->
+  <!-- ========================= -->
+
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0.125" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.6 0.35 0.25"/>
+      </geometry>
+      <material name="body_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.125" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.6 0.35 0.25"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.125"/>
+      <mass value="15.0"/>
+      <inertia ixx="0.21" ixy="0" ixz="0"
+               iyy="0.47" iyz="0"
+               izz="0.54"/>
+    </inertial>
+  </link>
+
+  <!-- ========================= -->
+  <!-- Left wheel                -->
+  <!-- radius=0.15m  width=0.07m -->
+  <!-- ========================= -->
+
+  <joint name="wheel_left_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_left_link"/>
+    <origin xyz="0 0.21 0" rpy="-1.5707963 0 0"/>
+    <axis xyz="0 0 1"/>
+    <dynamics damping="0.1" friction="0.1"/>
+  </joint>
+
+  <link name="wheel_left_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.07" radius="0.15"/>
+      </geometry>
+      <material name="wheel_black"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.07" radius="0.15"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.0"/>
+      <inertia ixx="0.0113" ixy="0" ixz="0"
+               iyy="0.0113" iyz="0"
+               izz="0.0225"/>
+    </inertial>
+  </link>
+
+  <!-- ========================= -->
+  <!-- Right wheel               -->
+  <!-- ========================= -->
+
+  <joint name="wheel_right_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_right_link"/>
+    <origin xyz="0 -0.21 0" rpy="-1.5707963 0 0"/>
+    <axis xyz="0 0 1"/>
+    <dynamics damping="0.1" friction="0.1"/>
+  </joint>
+
+  <link name="wheel_right_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.07" radius="0.15"/>
+      </geometry>
+      <material name="wheel_black"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.07" radius="0.15"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.0"/>
+      <inertia ixx="0.0113" ixy="0" ixz="0"
+               iyy="0.0113" iyz="0"
+               izz="0.0225"/>
+    </inertial>
+  </link>
+
+  <!-- ========================= -->
+  <!-- Front caster (frictionless ball) -->
+  <!-- ========================= -->
+
+  <joint name="caster_front_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="caster_front_link"/>
+    <origin xyz="0.22 0 -0.12" rpy="0 0 0"/>
+  </joint>
+
+  <link name="caster_front_link">
+    <visual>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+      <material name="caster_silver"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.0001" ixy="0" ixz="0"
+               iyy="0.0001" iyz="0"
+               izz="0.0001"/>
+    </inertial>
+  </link>
+
+  <!-- ========================= -->
+  <!-- Back caster               -->
+  <!-- ========================= -->
+
+  <joint name="caster_back_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="caster_back_link"/>
+    <origin xyz="-0.22 0 -0.12" rpy="0 0 0"/>
+  </joint>
+
+  <link name="caster_back_link">
+    <visual>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+      <material name="caster_silver"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.0001" ixy="0" ixz="0"
+               iyy="0.0001" iyz="0"
+               izz="0.0001"/>
+    </inertial>
+  </link>
+
+  <!-- ========================= -->
+  <!-- Gazebo colours            -->
+  <!-- ========================= -->
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="wheel_left_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="wheel_right_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="caster_front_link">
+    <material>Gazebo/Grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+  <gazebo reference="caster_back_link">
+    <material>Gazebo/Grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+
+  <!-- ========================= -->
+  <!-- Diff Drive Plugin         -->
+  <!-- wheel_separation = 0.21*2 = 0.42m -->
+  <!-- wheel_diameter   = 0.15*2 = 0.30m -->
+  <!-- ========================= -->
+
+  <gazebo>
+    <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+      <ros>
+        <namespace>/</namespace>
+      </ros>
+
+      <left_joint>wheel_left_joint</left_joint>
+      <right_joint>wheel_right_joint</right_joint>
+
+      <wheel_separation>0.42</wheel_separation>
+      <wheel_diameter>0.30</wheel_diameter>
+
+      <max_wheel_torque>100</max_wheel_torque>
+      <max_wheel_acceleration>3.0</max_wheel_acceleration>
+
+      <command_topic>cmd_vel</command_topic>
+
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>false</publish_wheel_tf>
+
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_footprint</robot_base_frame>
+    </plugin>
+  </gazebo>
+
+</robot>
